@@ -54,11 +54,8 @@ class PhotoReasoningViewModel(
 
                 var outputContent = ""
 
-                generativeModel.generateContentStream(inputContent)
-                    .collect { response ->
-                        outputContent += response.text
-                        _uiState.value = PhotoReasoningUiState.Success(outputContent)
-                    }
+               //TODO call the model here and update UI
+
             } catch (e: Exception) {
                 _uiState.value = PhotoReasoningUiState.Error(e.localizedMessage ?: "")
             }

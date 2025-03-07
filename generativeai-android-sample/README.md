@@ -1,18 +1,10 @@
-# Google Generative AI Sample for Android (Kotlin)
+# Build with AI workshop - Google Generative AI Sample for Android (Kotlin)
 
 This Android sample app demonstrates how to use state-of-the-art 
 generative AI models (like Gemini) to build AI-powered features and applications.
+We are going to explore the MultiModal feature from the SDK.
 
-To try out this sample app, you need to use latest stable version of Android Studio. 
-However, if you want to latest lint checks and AI productivity features in Android 
-Studio use the latest preview version of [Android Studio](https://developer.android.com/studio/preview).
-
-You can clone this repository or import the project from Android Studio following the steps
-[here](https://developer.android.com/jetpack/compose/setup#sample).
-
-## Screenshots
-
-<img src="screenshots/screenshots.png" alt="Screenshot">
+This project is a fork of the official sample in here: https://github.com/google/generative-ai-android
 
 ## Requirements
 
@@ -22,12 +14,23 @@ You can clone this repository or import the project from Android Studio followin
 ```txt
 apiKey=YOUR_API_KEY
 ```
-## Features
-
-This sample showcases the following API capablilites:
-* Generate Text - demonstrates the Text feature from the SDK
-* Photo Reasoning - demonstrates the MultiModal feature from the SDK
-* Chat - demonstrates the Multi-turn Conversations feature from the SDK
+3. Initialize a GenerativeModel with the `gemini-flash` AI model in the GenerativeAiViewModelFactory
+````txt
+ val generativeModel = GenerativeModel(
+                        modelName = "gemini-1.5-flash-latest",
+                        apiKey = BuildConfig.apiKey,
+                        generationConfig = config
+                    )
+````
+4. Run a prompt
+Call the generativeModel in the PhotoReasoningViewModel class with the given input your image as and update the UI,
+```txt
+generativeModel.generateContentStream(inputContent)
+   .collect { response ->
+   outputContent += response.text
+   _uiState.value = PhotoReasoningUiState.Success(outputContent)
+   }
+```
 
 ## Documentation
 
