@@ -162,7 +162,6 @@ fun PhotoReasoningScreen(
                                 purchaseCategory)
                         )
                         val purchaseJson = JsonConverter.convertPurchaseListToJson(purchaseList)
-
                         onReasonClicked(questionsAnswers, purchaseJson)
                     },
                     modifier = Modifier

@@ -15,6 +15,7 @@
  */
 package com.google.ai.sample
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -53,7 +54,9 @@ class MainActivity : ComponentActivity() {
                                 // Aici primești stringul cu toate răspunsurile
                                 // Poți să-l salvezi într-un ViewModel sau îl trimiți direct la route
                                 // De exemplu, direct navController.navigate("photo_reasoning")
-                                navController.navigate("photo_reasoning?answers=$allAnswers")
+                                val encodedAnswers = Uri.encode(allAnswers)
+
+                                navController.navigate("photo_reasoning?answers=$encodedAnswers")
                             }
                         }
 

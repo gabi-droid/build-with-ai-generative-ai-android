@@ -16,6 +16,7 @@
 
 package com.google.ai.sample.feature.multimodal
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -36,6 +37,7 @@ class PhotoReasoningViewModel(
     val uiState: StateFlow<PhotoReasoningUiState> =
         _uiState.asStateFlow()
 
+    @SuppressLint("SuspiciousIndentation")
     fun reason(
         userInput1: String,
         userInput2: String
@@ -45,8 +47,10 @@ class PhotoReasoningViewModel(
         val prompt = "You are an expert financial planner and advisor. " +
                 "You gain data from an expense history table of your client.\n" +
                 "Your purpose is to offer advice to your client, and update the financial plan according to the new expense history." +
-
+                "This is a recent expense:\n"+
+                "(Notes: The first value is the amount and the second one is the Category, this is all you ll need)" +
                 userInput2 +
+                "User Profile:\n" +
                 userInput1 +
                 "**Last Recommended Financial Plan**\n" +
                 "**[Date: 2024-02-29]**\n" +
@@ -133,7 +137,7 @@ class PhotoReasoningViewModel(
                 "\n" +
                 "\n" +
                 "\n" +
-                "**Example Output Format:**\n" +
+                "**Example Output Format(exclude the *):**\n" +
                 "Financial Advice Report\n" +
                 "Client Overview: [Summarize the client's financial situation]\n" +
                 "Spending Habits Analysis: [Analyze spending patterns]\n" +

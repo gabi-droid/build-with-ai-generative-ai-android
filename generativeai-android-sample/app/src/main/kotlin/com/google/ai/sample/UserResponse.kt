@@ -38,6 +38,9 @@ fun QuestionScreen(onSubmit: (String) -> Unit) {
             value = answers[0],
             onValueChange = { answers[0] = it },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
+            textStyle = MaterialTheme.typography.bodyLarge.copy(
+                color = MaterialTheme.colorScheme.onSurface
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
@@ -51,6 +54,9 @@ fun QuestionScreen(onSubmit: (String) -> Unit) {
             value = answers[1],
             onValueChange = { answers[1] = it },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+            textStyle = MaterialTheme.typography.bodyLarge.copy(
+                color = MaterialTheme.colorScheme.onSurface
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
@@ -63,6 +69,9 @@ fun QuestionScreen(onSubmit: (String) -> Unit) {
             value = answers[2],
             onValueChange = { answers[2] = it },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+            textStyle = MaterialTheme.typography.bodyLarge.copy(
+                color = MaterialTheme.colorScheme.onSurface
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
@@ -75,6 +84,9 @@ fun QuestionScreen(onSubmit: (String) -> Unit) {
             value = answers[3],
             onValueChange = { answers[3] = it },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+            textStyle = MaterialTheme.typography.bodyLarge.copy(
+                color = MaterialTheme.colorScheme.onSurface
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
@@ -87,6 +99,9 @@ fun QuestionScreen(onSubmit: (String) -> Unit) {
             value = answers[4],
             onValueChange = { answers[4] = it },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+            textStyle = MaterialTheme.typography.bodyLarge.copy(
+                color = MaterialTheme.colorScheme.onSurface
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
@@ -99,6 +114,9 @@ fun QuestionScreen(onSubmit: (String) -> Unit) {
             value = answers[5],
             onValueChange = { answers[5] = it },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+            textStyle = MaterialTheme.typography.bodyLarge.copy(
+                color = MaterialTheme.colorScheme.onSurface
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
@@ -111,6 +129,9 @@ fun QuestionScreen(onSubmit: (String) -> Unit) {
             value = answers[6],
             onValueChange = { answers[6] = it },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+            textStyle = MaterialTheme.typography.bodyLarge.copy(
+                color = MaterialTheme.colorScheme.onSurface
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
@@ -123,6 +144,9 @@ fun QuestionScreen(onSubmit: (String) -> Unit) {
             value = answers[7],
             onValueChange = { answers[7] = it },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+            textStyle = MaterialTheme.typography.bodyLarge.copy(
+                color = MaterialTheme.colorScheme.onSurface
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
@@ -135,6 +159,9 @@ fun QuestionScreen(onSubmit: (String) -> Unit) {
             value = answers[8],
             onValueChange = { answers[8] = it },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+            textStyle = MaterialTheme.typography.bodyLarge.copy(
+                color = MaterialTheme.colorScheme.onSurface
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
@@ -147,6 +174,9 @@ fun QuestionScreen(onSubmit: (String) -> Unit) {
             value = answers[9],
             onValueChange = { answers[9] = it },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+            textStyle = MaterialTheme.typography.bodyLarge.copy(
+                color = MaterialTheme.colorScheme.onSurface
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
@@ -159,6 +189,9 @@ fun QuestionScreen(onSubmit: (String) -> Unit) {
             value = answers[10],
             onValueChange = { answers[10] = it },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+            textStyle = MaterialTheme.typography.bodyLarge.copy(
+                color = MaterialTheme.colorScheme.onSurface
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
@@ -171,6 +204,9 @@ fun QuestionScreen(onSubmit: (String) -> Unit) {
             value = answers[11],
             onValueChange = { answers[11] = it },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+            textStyle = MaterialTheme.typography.bodyLarge.copy(
+                color = MaterialTheme.colorScheme.onSurface
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
@@ -183,6 +219,9 @@ fun QuestionScreen(onSubmit: (String) -> Unit) {
             value = answers[12],
             onValueChange = { answers[12] = it },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+            textStyle = MaterialTheme.typography.bodyLarge.copy(
+                color = MaterialTheme.colorScheme.onSurface
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
@@ -195,6 +234,9 @@ fun QuestionScreen(onSubmit: (String) -> Unit) {
             value = answers[13],
             onValueChange = { answers[13] = it },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+            textStyle = MaterialTheme.typography.bodyLarge.copy(
+                color = MaterialTheme.colorScheme.onSurface
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
@@ -207,6 +249,9 @@ fun QuestionScreen(onSubmit: (String) -> Unit) {
             value = answers[14],
             onValueChange = { answers[14] = it },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+            textStyle = MaterialTheme.typography.bodyLarge.copy(
+                color = MaterialTheme.colorScheme.onSurface
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
@@ -219,6 +264,9 @@ fun QuestionScreen(onSubmit: (String) -> Unit) {
             value = answers[15],
             onValueChange = { answers[15] = it },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+            textStyle = MaterialTheme.typography.bodyLarge.copy(
+                color = MaterialTheme.colorScheme.onSurface
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
@@ -231,6 +279,9 @@ fun QuestionScreen(onSubmit: (String) -> Unit) {
             value = answers[16],
             onValueChange = { answers[16] = it },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+            textStyle = MaterialTheme.typography.bodyLarge.copy(
+                color = MaterialTheme.colorScheme.onSurface
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
@@ -243,6 +294,9 @@ fun QuestionScreen(onSubmit: (String) -> Unit) {
             value = answers[17],
             onValueChange = { answers[17] = it },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+            textStyle = MaterialTheme.typography.bodyLarge.copy(
+                color = MaterialTheme.colorScheme.onSurface
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
@@ -255,6 +309,9 @@ fun QuestionScreen(onSubmit: (String) -> Unit) {
             value = answers[18],
             onValueChange = { answers[18] = it },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+            textStyle = MaterialTheme.typography.bodyLarge.copy(
+                color = MaterialTheme.colorScheme.onSurface
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
@@ -267,6 +324,9 @@ fun QuestionScreen(onSubmit: (String) -> Unit) {
             value = answers[19],
             onValueChange = { answers[19] = it },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+            textStyle = MaterialTheme.typography.bodyLarge.copy(
+                color = MaterialTheme.colorScheme.onSurface
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
@@ -277,8 +337,6 @@ fun QuestionScreen(onSubmit: (String) -> Unit) {
         Button(
             onClick = {
                 val allAnswersAsString = answers.joinToString(separator = "\n")
-
-                // Transmite-l mai departe prin callback
                 onSubmit(allAnswersAsString)
             },
             modifier = Modifier.align(Alignment.End)
@@ -291,7 +349,7 @@ fun QuestionScreen(onSubmit: (String) -> Unit) {
 @Preview(showSystemUi = true)
 @Composable
 fun QuestionScreenPreview() {
-    QuestionScreen { response ->
-        println("User submitted: $response")
-    }
+//    QuestionScreen { response ->
+//        println("User submitted: $response")
+//    }
 }
