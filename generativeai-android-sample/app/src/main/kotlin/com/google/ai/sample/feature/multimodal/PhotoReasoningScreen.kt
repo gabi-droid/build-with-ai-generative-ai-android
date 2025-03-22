@@ -110,17 +110,6 @@ fun PhotoReasoningScreen(
         }
     }
 
-    val answers = answersString.split("\n")
-
-    val questionsAnswers = ""
-    val index = 0
-
-    for (part in answers) {
-        val id = R.string.question_1+index
-        val plus = questionsAnswers.plus(Text(stringResource(id)))
-        questionsAnswers.plus("Answer: " + part)
-        index.inc()
-    }
 
     Column(
         modifier = Modifier
@@ -162,7 +151,7 @@ fun PhotoReasoningScreen(
                                 purchaseCategory)
                         )
                         val purchaseJson = JsonConverter.convertPurchaseListToJson(purchaseList)
-                        onReasonClicked(questionsAnswers, purchaseJson)
+                        onReasonClicked(answersString, purchaseJson)
                     },
                     modifier = Modifier
                         .padding(all = 4.dp)
