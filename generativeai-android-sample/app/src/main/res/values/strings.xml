@@ -34,6 +34,12 @@
     <string name="reason_hint">Upload an image and then ask a question</string>
     <string name="add_image">Add Image</string>
 
+    <string name="purchase_amount">Amount</string>
+    <string name="purchase_amount_hint">How much did you spend?</string>
+
+    <string name="purchase_category">Category</string>
+    <string name="purchase_category_hint">What type of purchase was it?</string>
+
     <!-- Chat sample strings -->
     <string name="chat_label">Message</string>
     <string name="action_send">Send</string>

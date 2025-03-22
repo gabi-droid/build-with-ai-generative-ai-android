@@ -37,8 +37,7 @@ class PhotoReasoningViewModel(
         _uiState.asStateFlow()
 
     fun reason(
-        userInput: String,
-        selectedImages: List<Bitmap>
+        userInput: String
     ) {
         _uiState.value = PhotoReasoningUiState.Loading
         val prompt = "Look at the image(s), and then answer the following question: $userInput"
@@ -46,9 +45,6 @@ class PhotoReasoningViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val inputContent = content {
-                    for (bitmap in selectedImages) {
-                        image(bitmap)
-                    }
                     text(prompt)
                 }
 
