@@ -43,4 +43,25 @@
     <!-- Chat sample strings -->
     <string name="chat_label">Message</string>
     <string name="action_send">Send</string>
+
+    <string name="question_1">Question 1: What is your employment status? (Employed, Self-employed, Student, Retired, Unemployed)</string>
+    <string name="question_2">Question 2: What is your primary source of income? (Salary, Freelance, Business, Investments, Other)</string>
+    <string name="question_3">Question 3: What is your average monthly income?</string>
+    <string name="question_4">Question 4: How stable is your income? (Fixed, Variable, Seasonal, Unpredictable)</string>
+    <string name="question_5">Question 5: Do you have any secondary sources of income? If yes, how much on average?</string>
+    <string name="question_6">Question 6: Do you have any dependents (children, parents, spouse) you financially support?</string>
+    <string name="question_7">Question 7: How much do you spend on groceries each month?</string>
+    <string name="question_8">Question 8: What is your average monthly utility bill cost? (Electricity, Water, Gas, Internet, etc.)</string>
+    <string name="question_9">Question 9: How much do you spend on transportation (fuel, public transport, car maintenance)?"</string>
+    <string name="question_10">Question 10: Do you have any regular subscriptions (Netflix, Spotify, Gym, Magazines, etc.)?"</string>
+    <string name="question_11">Question 11: How much do you spend on entertainment and dining out?")</string>
+    <string name="question_12">Question 12: How much do you spend on shopping (clothing, gadgets, accessories)?</string>
+    <string name="question_13">Question 13: Do you set aside money for travel or vacations? If yes, how much per month?</string>
+    <string name="question_14">Question 14: What is your total estimated monthly expenditure?</string>
+    <string name="question_15">Question 15: Do you usually save money? (Yes/No)</string>
+    <string name="question_16">Question 16: Do you currently have savings? If yes, how much on average do you save per month?</string>
+    <string name="question_17">Question 17: How much would you like to save per month?</string>
+    <string name="question_18">Question 18: Are you currently investing in stocks, mutual funds, crypto, or real estate? If yes, how much per month?</string>
+    <string name="question_19">Question 19: What is your biggest financial challenge? (Overspending, Low Income, Debt, Saving, Other)</string>
+    <string name="question_20">Question 20: Are there any specific financial habits you want to improve?</string>
 </resources>
