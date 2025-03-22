@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.google.ai.sample
 
 import android.os.Bundle
@@ -26,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.google.ai.sample.feature.multimodal.PhotoReasoningRoute
 import com.google.ai.sample.ui.theme.GenerativeAISample
 
@@ -36,21 +36,40 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             GenerativeAISample {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val navController = rememberNavController()
 
-                    NavHost(navController = navController, startDestination = "menu") {
+                    NavHost(
+                        navController = navController,
+                        // Schimbi startDestination în "question_screen"
+                        startDestination = "question_screen"
+                    ) {
+                        composable("question_screen") {
+                            // Apelezi QuestionScreen
+                            QuestionScreen { allAnswers ->
+                                // Aici primești stringul cu toate răspunsurile
+                                // Poți să-l salvezi într-un ViewModel sau îl trimiți direct la route
+                                // De exemplu, direct navController.navigate("photo_reasoning")
+                                navController.navigate("photo_reasoning?answers=$allAnswers")
+                            }
+                        }
+
+                        composable(
+                            route = "photo_reasoning?answers={answers}",
+                            arguments = listOf(navArgument("answers") { defaultValue = "" })
+                        ) { backStackEntry ->
+                            val answersArg = backStackEntry.arguments?.getString("answers") ?: ""
+                            PhotoReasoningRoute(answersArg)
+                        }
+
+                        // (Opțional) Dacă tot vrei un ecran "menu", îl poți lăsa
                         composable("menu") {
                             MenuScreen(onItemClicked = { routeId ->
                                 navController.navigate(routeId)
                             })
-                        }
-                        composable("photo_reasoning") {
-                            PhotoReasoningRoute()
                         }
                     }
                 }

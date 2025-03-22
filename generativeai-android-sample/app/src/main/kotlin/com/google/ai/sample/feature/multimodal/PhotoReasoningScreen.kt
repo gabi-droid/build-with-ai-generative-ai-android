@@ -16,10 +16,7 @@
 
 package com.google.ai.sample.feature.multimodal
 
-import android.graphics.drawable.BitmapDrawable
-import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -33,12 +30,10 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Person
-import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -63,10 +58,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.ImageLoader
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import coil.request.SuccessResult
 import com.google.ai.sample.GenerativeViewModelFactory
-import coil.size.Precision
+import com.google.ai.sample.EmploymentStatus
+import com.google.ai.sample.IncomeStability
 import com.google.ai.sample.R
+import com.google.ai.sample.UserProfile
 import com.google.ai.sample.util.Purchase
 import com.google.ai.sample.util.PurchaseList
 import com.google.ai.sample.util.UriSaver
@@ -75,6 +71,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 internal fun PhotoReasoningRoute(
+    answersArg: String,
     viewModel: PhotoReasoningViewModel = viewModel(factory = GenerativeViewModelFactory)
 ) {
     val photoReasoningUiState by viewModel.uiState.collectAsState()
@@ -84,10 +81,11 @@ internal fun PhotoReasoningRoute(
     val imageLoader = ImageLoader.Builder(LocalContext.current).build()
 
     PhotoReasoningScreen(
+        answersString = answersArg,
         uiState = photoReasoningUiState,
-        onReasonClicked = { inputText ->
+        onReasonClicked = { profileString, purchaseString  ->
             coroutineScope.launch {
-                viewModel.reason(inputText)
+                viewModel.reason(profileString, purchaseString)
             }
         }
     )
@@ -95,11 +93,13 @@ internal fun PhotoReasoningRoute(
 
 @Composable
 fun PhotoReasoningScreen(
+    answersString: String,
     uiState: PhotoReasoningUiState = PhotoReasoningUiState.Loading,
-    onReasonClicked: (String) -> Unit = { _ -> }
+    onReasonClicked: (String, String) -> Unit = { _, _ -> }
 ) {
     var purchaseAmount by rememberSaveable { mutableStateOf("") }
     var purchaseCategory by rememberSaveable { mutableStateOf("") }
+    var userProfile by rememberSaveable { mutableStateOf("") }
     val purchaseList = PurchaseList()
     val imageUris = rememberSaveable(saver = UriSaver()) { mutableStateListOf() }
 
@@ -144,8 +144,15 @@ fun PhotoReasoningScreen(
                 )
                 TextButton(
                     onClick = {
-                        purchaseList.addPurchase(Purchase(purchaseAmount.toDouble(), System.currentTimeMillis(), purchaseCategory))
-                        onReasonClicked(JsonConverter.convertPurchaseListToJson(purchaseList))
+                        purchaseList.addPurchase(
+                            Purchase(
+                                purchaseAmount.toDouble(),
+                                System.currentTimeMillis(),
+                                purchaseCategory)
+                        )
+                        val purchaseJson = JsonConverter.convertPurchaseListToJson(purchaseList)
+
+                        onReasonClicked(answersString, purchaseJson)
                     },
                     modifier = Modifier
                         .padding(all = 4.dp)
@@ -244,5 +251,5 @@ fun PhotoReasoningScreen(
 @Composable
 @Preview(showSystemUi = true)
 fun PhotoReasoningScreenPreview() {
-    PhotoReasoningScreen()
+//    PhotoReasoningScreen()
 }
