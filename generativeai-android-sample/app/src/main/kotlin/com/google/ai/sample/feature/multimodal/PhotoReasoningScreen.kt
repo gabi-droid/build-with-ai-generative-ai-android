@@ -67,7 +67,10 @@ import coil.request.SuccessResult
 import com.google.ai.sample.GenerativeViewModelFactory
 import coil.size.Precision
 import com.google.ai.sample.R
+import com.google.ai.sample.util.Purchase
+import com.google.ai.sample.util.PurchaseList
 import com.google.ai.sample.util.UriSaver
+import com.google.ai.sample.util.JsonConverter
 import kotlinx.coroutines.launch
 
 @Composable
@@ -82,27 +85,9 @@ internal fun PhotoReasoningRoute(
 
     PhotoReasoningScreen(
         uiState = photoReasoningUiState,
-        onReasonClicked = { inputText, selectedItems ->
+        onReasonClicked = { inputText ->
             coroutineScope.launch {
-                val bitmaps = selectedItems.mapNotNull {
-                    val imageRequest = imageRequestBuilder
-                        .data(it)
-                        // Scale the image down to 768px for faster uploads
-                        .size(size = 768)
-                        .precision(Precision.EXACT)
-                        .build()
-                    try {
-                        val result = imageLoader.execute(imageRequest)
-                        if (result is SuccessResult) {
-                            return@mapNotNull (result.drawable as BitmapDrawable).bitmap
-                        } else {
-                            return@mapNotNull null
-                        }
-                    } catch (e: Exception) {
-                        return@mapNotNull null
-                    }
-                }
-                viewModel.reason(inputText, bitmaps)
+                viewModel.reason(inputText)
             }
         }
     )
@@ -111,9 +96,11 @@ internal fun PhotoReasoningRoute(
 @Composable
 fun PhotoReasoningScreen(
     uiState: PhotoReasoningUiState = PhotoReasoningUiState.Loading,
-    onReasonClicked: (String, List<Uri>) -> Unit = { _, _ -> }
+    onReasonClicked: (String) -> Unit = { _ -> }
 ) {
-    var userQuestion by rememberSaveable { mutableStateOf("") }
+    var purchaseAmount by rememberSaveable { mutableStateOf("") }
+    var purchaseCategory by rememberSaveable { mutableStateOf("") }
+    val purchaseList = PurchaseList()
     val imageUris = rememberSaveable(saver = UriSaver()) { mutableStateListOf() }
 
     val pickMedia = rememberLauncherForActivityResult(
@@ -135,34 +122,30 @@ fun PhotoReasoningScreen(
             Row(
                 modifier = Modifier.padding(top = 16.dp)
             ) {
-                IconButton(
-                    onClick = {
-                        pickMedia.launch(
-                            PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
-                        )
-                    },
-                    modifier = Modifier
-                        .padding(all = 4.dp)
-                        .align(Alignment.CenterVertically)
-                ) {
-                    Icon(
-                        Icons.Rounded.Add,
-                        contentDescription = stringResource(R.string.add_image),
-                    )
-                }
                 OutlinedTextField(
-                    value = userQuestion,
-                    label = { Text(stringResource(R.string.reason_label)) },
-                    placeholder = { Text(stringResource(R.string.reason_hint)) },
-                    onValueChange = { userQuestion = it },
+                    value = purchaseAmount,
+                    label = { Text(stringResource(R.string.purchase_amount)) },
+                    placeholder = { Text(stringResource(R.string.purchase_amount_hint)) },
+                    onValueChange = { purchaseAmount = it },
+                    modifier = Modifier
+                        .fillMaxWidth(0.8f)
+                )
+            }
+            Row(
+                modifier = Modifier.padding(top = 16.dp)
+            ) {
+                OutlinedTextField(
+                    value = purchaseCategory,
+                    label = { Text(stringResource(R.string.purchase_category)) },
+                    placeholder = { Text(stringResource(R.string.purchase_category_hint)) },
+                    onValueChange = { purchaseCategory = it },
                     modifier = Modifier
                         .fillMaxWidth(0.8f)
                 )
                 TextButton(
                     onClick = {
-                        if (userQuestion.isNotBlank()) {
-                            onReasonClicked(userQuestion, imageUris.toList())
-                        }
+                        purchaseList.addPurchase(Purchase(purchaseAmount.toDouble(), System.currentTimeMillis(), purchaseCategory))
+                        onReasonClicked(JsonConverter.convertPurchaseListToJson(purchaseList))
                     },
                     modifier = Modifier
                         .padding(all = 4.dp)
