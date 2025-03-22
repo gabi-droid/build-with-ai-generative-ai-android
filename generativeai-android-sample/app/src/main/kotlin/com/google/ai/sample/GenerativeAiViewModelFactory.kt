@@ -38,9 +38,13 @@ val GenerativeViewModelFactory = object : ViewModelProvider.Factory {
                 isAssignableFrom(PhotoReasoningViewModel::class.java) -> {
                     // Initialize a GenerativeModel with the `gemini-flash` AI model
                     // for multimodal text generation
-                   //TODO Initialize the model
+                    val generativeModel = GenerativeModel(
+                        modelName = "gemini-1.5-flash-latest",
+                        apiKey = BuildConfig.apiKey,
+                        generationConfig = config
+                    )
 
-                    //PhotoReasoningViewModel(generativeModel)
+                    PhotoReasoningViewModel(generativeModel)
                 }
 
                 else ->
